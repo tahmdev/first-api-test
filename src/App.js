@@ -37,6 +37,8 @@ class Test extends React.Component{
           categories: arr,
         })
       })
+
+    
   }
   callApi(){
     let search = ""
@@ -117,6 +119,9 @@ class Test extends React.Component{
       backgroundColor: "red"
     }
 
+    let input = document.getElementById("search-bar")
+    console.log(input)
+    
     if(!this.state.loaded){
       return (<div>Loading...</div>)
     }
@@ -125,7 +130,7 @@ class Test extends React.Component{
       <div>
         <nav id="navbar">
           <div id="search-wrapper">
-            <input type="text" id="search-bar" placeholder="Search..." />
+            <input type="text" id="search-bar" placeholder="Search..." onKeyDown={e => e.key==="Enter" ? this.handleSearch() : console.log(e.key)}/>
             <button type="submit" id="search-btn" onClick={this.handleSearch}><i className="fa fa-search"></i></button>
           </div>
         </nav>
